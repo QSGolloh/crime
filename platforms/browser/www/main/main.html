@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Crime Reporter</title> 
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <style>
+          body{
+            background-color: white;
+  
+          }
+          .marginTop{
+            margin-top:  20vh;
+          }
+          .btn{
+            background: palevioletred !important;
+            color: white;
+          }
+        </style>
+    </head>
+    <body>
+        
+                <center><h2 style="color:palevioletred ">Home Page</h2></center>
+     <br/> <br/> <br/>
+    <button  id="cameraTakePicture">TAKE PICTURE</button>
+    
+    <br/> 
+
+
+    <select id="org" name="organization">
+      <option>Organization..</option>
+      <option value=“Police“>Police Service</option>
+      <option value=“fire”>Fire Service</option>
+      <option value=“hospital”>Hospital</option>
+      <option value=“dvla”>DVLA</option>
+    </select> <br/>
+
+
+    <textarea id= "message" rows="4" cols="40" name="comment" form="usrform" placeholder="Enter Message Here...">
+    </textarea> <br/>
+
+
+  
+    <button class="btn btn-info btn-lg" type="button" name="homepageInfo" id="infoSubmit" data-submit="...Sending"> Submit Info</button>
+            
+
+    <p id="me"></p>
+   
+
+   <img id = "myImage" src=""></img>
+  <script type="text/javascript" src="../cordova.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC-BIKWagY48wVg4gLjRGL2dloSD4rsDk">
+  </script>
+  <script src="../js/firebaseMain.js"></script>
+  <script src="../js/firebase.js"></script>
+  <script src="../js/location.js"></script>
+  <script src ="../js/ajax.js"></script>
+  <script src ="../js/camera.js"></script>
+  <script type="text/javascript">
+
+
+
+    function submitdetails(){
+     //  var imageName= document.images[0].replace(/^.*[\\\/]/, '');
+     //  console.log(imageName);
+     //  var storageRef = firebase.storage().ref("images/");
+     //  storageRef.put(image.src).then(function(snapshot) {
+     //    console.log(snapshot);
+     //  });
+
+
+      var org = document.getElementById('org').value;
+      var msg = document.getElementById('message').value; 
+      var date = new Date();
+      var date = date.toString();
+       firebase.database().ref("reports").push({
+          org: org,
+          msg: msg,
+          date: date,
+          lat: lat,
+          lon: longi,
+        //image: image
+       }).then(()=>{
+        document.getElementById('message').value = '';
+        console.log("added");
+       })
+     
+     }
+
+      
+var infoSubmit  = document.getElementById("infoSubmit");
+infoSubmit.addEventListener("click", submitdetails);
+
+  </script>
+  </body>
+  </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+  <html >
+  <head>
+      <meta charset="UTF-8">
+      <title>Crime Reporter</title> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <link rel="stylesheet" href="./css/bootstrap.min.css">
+      <style>
+        body{
+          background-color: plum;
+
+        }
+        .marginTop{
+          margin-top:  20vh;
+        }
+        .btn{
+          background: palevioletred !important
+        }
+      </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">CrimeReporter</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>    
+      <div class="container  col-xs-12  marginTop">
+          <form id="contact" name="login_form" action="" method="post" role="form">
+              <center><h2 style="color:white">Login</h2></center>
+              <div class="form-group col-xs-12">
+                  <input class="form-control" id= "email" placeholder="email" type="email" tabindex="1" name="username" required >
+              </div>
+              <div class="form-group col-xs-12">
+                 <input class="form-control" id = "password" placeholder="Password" type="password" name="password" tabindex="2" required>
+              </div>
+              <button class="btn btn-primary " type="button" name="login" id="loginSubmit" data-submit="...Sending" onclick = "loginAjax()">Login</button>
+              <a href="../register/index.html">Register</a>
+          </form>
+      </div>
+      <script src="./js/firebaseMain.js"></script>
+      <script src="./js/firebase.js"></script>
+      <script src="./js/ajax.js"></script>
+      
+  </body>
+  </html>
+  
